@@ -1,68 +1,197 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  --clr-bg: hsl(0, 0%, 13%);
+  --clr-grey: hsl(216, 8%, 12%);
+  --clr-primary: hsl(11, 78%, 55%);
+  --clr-secondary: hsla(0, 0%, 100%, 0.85);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  margin: 0;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-secondary);
+  font-family: "Poppins", sans-serif;
+}
+
+h2 {
+  color: hsla(0, 0%, 100%, 0.274);
+  font-size: 3rem;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  color: var(--clr-primary);
+  font-weight: 900;
+  font-size: 6rem;
 }
 
+.text-input-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  --height: 35px;
+  color: white;
+
+  & > input {
+    border: 1px solid var(--clr-primary);
+    background-color: inherit;
+    color: inherit;
+    border-radius: 4px;
+    height: var(--height);
+    padding-inline: 1rem;
+    min-width: 20rem;
+  }
+
+  & > select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: inherit;
+    color: var(--clr-primary);
+    border: 1px solid var(--clr-primary);
+    border-radius: 4px;
+    height: var(--height);
+    width: 6rem;
+    text-align: center;
+    padding-inline: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+  }
+
+  & > select:hover {
+    background-color: var(--clr-primary);
+    color: var(--clr-bg);
+  }
+}
+
+.task-lists {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.task-list-wrapper {
+  background-color: rgb(31, 31, 31);
+  border: solid rgba(238, 238, 238, 0.1) 1px;
+  border-radius: 6px;
+  min-width: 400px;
+
+  & > ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    list-style-type: none;
+    padding: 1rem;
+  }
+
+  & > ul > li {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--clr-bg);
+    padding: 0.1rem 1rem;
+    border: solid rgba(150, 150, 150, 0.1) 1px;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 1.1rem;
+  }
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  & > span {
+    color: hsla(11, 78%, 55%, 0.501);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--clr-primary);
+    }
+  }
+}
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--clr-primary);
+  border-radius: 4px;
+  color: var(--clr-primary);
+  background-color: var(--clr-bg);
+  padding: 0.3rem 0.75rem;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  &.icon {
+    padding: 0.3rem 0.4rem;
+    border: none;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+
+  &:hover {
+    background-color: var(--clr-primary);
+    color: var(--clr-bg);
   }
 }
